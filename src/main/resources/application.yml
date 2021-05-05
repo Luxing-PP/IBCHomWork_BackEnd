@@ -8,3 +8,8 @@ spring:
     username: root
     password: 123456
 
+
+mybatis:
+#  实体位置+映射xml位置
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.njucjz.demo.data

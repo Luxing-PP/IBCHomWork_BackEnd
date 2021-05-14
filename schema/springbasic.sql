@@ -1,23 +1,27 @@
+drop database if exists IBCDatabase;
+create database if not exists IBCDatabase default charset utf8;
 
-# i don'know= =
+use IBCDatabase;
+
+# tip i don'know= =
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS=0;
 
-drop database if exists springbasic;
-create database if not exists `springbasic` default charset utf8;
 
-use `springbasic`;
+
+
 
 -- ----------------------------
--- Table structure for `course`
+-- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `uid` int NOT NULL AUTO_INCREMENT,
 #  tip Collate 影响的是排序的规则
 #      Engine = InnoDB 则是选择了一个带事务控制（全部执行或全部不执行）引擎，
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci default NULL,
+  `userType` tinyint default 0,
+  `isActive` boolean,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

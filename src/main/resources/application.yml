@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
 #    springbasic——对应了数据库名字
-    url: jdbc:mysql://localhost:3306/springbasic?setUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://1.116.220.137:3306/springbasic?setUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456

@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
-    <resultMap id="" type="">
-        <id column="" jdbcType="" property=""/>
-        <result column="" jdbcType="" property=""/>
+<mapper namespace="com.njucjz.demo.dao.TimerDao">
+    <insert id="save" parameterType="com.njucjz.demo.data.Timer" useGeneratedKeys="true" keyProperty="tid">
+        insert into `timers` (version,livingTime) VALUES (#{version},#{livingTime})
+    </insert>
+    
+    <select id="getTimerByVersion" resultMap="Timer">
+        select * from `timers` where version = #{version}
+    </select>
+
+    <resultMap id="Timer" type="com.njucjz.demo.data.Timer">
+        <id column="tid" property="tid"/>
+        <result column="version" property="version"></result>
+        <result column="livingTime" property="livingTime"></result>
     </resultMap>
 </mapper>

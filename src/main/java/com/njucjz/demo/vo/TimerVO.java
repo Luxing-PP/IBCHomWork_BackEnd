@@ -1,16 +1,16 @@
-package com.njucjz.demo.data;
+package com.njucjz.demo.vo;
 
-public class Timer {
-    private Integer tid;
+public class TimerVO {
     private Integer version;
+    private Integer leftTime;
     private Integer livingTime;
 
-    public Integer getTid() {
-        return tid;
+    public Integer getLeftTime() {
+        return leftTime;
     }
 
-    public void setTid(Integer tid) {
-        this.tid = tid;
+    public void setLeftTime(Integer leftTime) {
+        this.leftTime = leftTime;
     }
 
     public Integer getVersion() {

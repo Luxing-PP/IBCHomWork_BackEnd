@@ -1,2 +1,2 @@
-# SpringBootPractice
-Practice project of SpringBoot Learning
+# IBCHomeWork_BackEnd
+计网大作业小程序开发的SpringBoot后端项目

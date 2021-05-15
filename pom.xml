@@ -38,7 +38,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
-        <dependency>
         <!--spring boot mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     @Autowired
     UserDao userDao;
 
@@ -28,7 +27,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO login(String username, String password) {
         User user = userDao.getUserByUsername(username);
-        if (user == null|| !password.equals(user.getPassword())){
+        if (user == null){
             return null;
         }
         UserVO userVO = new UserVO();

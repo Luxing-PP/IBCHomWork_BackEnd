@@ -55,7 +55,7 @@ CREATE TABLE `user_letter`(
 -- ----------------------------
 -- Records of user_letter
 -- ----------------------------
-# Null
+INSERT INTO `user_letter` VALUES ('1','1');
 
 -- ----------------------------
 -- Table structure for `letters`
@@ -63,7 +63,7 @@ CREATE TABLE `user_letter`(
 DROP TABLE IF EXISTS `letters`;
 CREATE TABLE `letters`(
     `lid` int NOT NULL AUTO_INCREMENT,
-    `uid` int not null unique ,
+    `uid` int NOT NULL,
     `content` varchar(2000) NOT NULL,
     `created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`lid`)

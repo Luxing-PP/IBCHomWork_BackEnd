@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njucjz.demo.dao.LetterDao">
+    <insert id="writeLetter" parameterType="com.njucjz.demo.data.Letter" useGeneratedKeys="true" keyProperty="lid">
+        insert into `letters` (uid, content) VALUES (#{uid}, #{content})
+    </insert>
+
+    <select id="getLetterByRandom" resultMap="Letter">
+        SELECT * FROM `letters` WHERE lid >= (SELECT FLOOR( MAX(lid) * RAND()) FROM `letters` ) ORDER BY lid LIMIT 1;
+    </select>
+
+    <select id="getRelatedLetterByUid" resultMap="Letter">
+        SET @targetID:=0;
+        SELECT l.lid into @targetID from `letters` l, `user_letter` ul
+            WHERE l.lid = ul.lid and ul.uid = #{uid} ORDER BY l.lid LIMIT 1 ;
+
+        DELETE FROM `user_letter` WHERE uid = #{uid} and lid = @targetID ;
+        SELECT * From letters Where lid=@targetID;
+    </select>
+
+    <resultMap id="Letter" type="com.njucjz.demo.data.Letter">
+        <id column="lid"  property="lid"></id>
+        <result column="uid"  property="uid"></result>
+        <result column="content" property="content"></result>
+        <result column="created" jdbcType="TIMESTAMP" property="created"></result>
+    </resultMap>
+</mapper>

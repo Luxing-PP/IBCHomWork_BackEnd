@@ -4,6 +4,7 @@ import com.njucjz.demo.dao.TimerDao;
 import com.njucjz.demo.data.Timer;
 import com.njucjz.demo.util.TimerInstance;
 import com.njucjz.demo.vo.TimerVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,14 +24,21 @@ public class TimerServiceImpl implements TimerService {
         return timerVO;
     }
 
-    //todo 懒得做
     @Override
     public TimerVO getTimerByVersion(Integer version) {
         if(version==TimerInstance.version){
             //当前周期不支持
             return null;
+        }else {
+            Timer timer = timerDao.getTimerByVersion(version);
+            if(timer==null){
+                return null;
+            }
+
+            TimerVO timerVO = new TimerVO();
+            BeanUtils.copyProperties(timer,timerVO);
+            return timerVO;
         }
-        return null;
     }
 
     @Override

@@ -7,9 +7,12 @@ import org.apache.ibatis.annotations.Mapper;
 public interface LetterDao {
     boolean writeLetter(Letter letter);
 
-    /*Tip 随机获取，据网上称可以优化 草 有Bug*/
+    /*获取某用户写过的信数*/
+    int getLetterCountByUid(Integer uid);
+
+    /*tip 随机获取，据网上称可以优化*/
     Letter getLetterByRandom();
 
-    /*Tip 获取后会删除*/
+    /*获取后会删除 */
     Letter getRelatedLetterByUid(Integer uid);
 }

@@ -1,20 +1,9 @@
-package com.njucjz.demo.data;
+package com.njucjz.demo.form;
 
-import lombok.Data;
-
-
-public class UserLetter {
-    private Integer ulid;
+public class GetResponseForm {
+    //仅用作更新信件池
     private Integer uid;
     private Integer lid;
-
-    public Integer getUlid() {
-        return ulid;
-    }
-
-    public void setUlid(Integer ulid) {
-        this.ulid = ulid;
-    }
 
     public Integer getUid() {
         return uid;

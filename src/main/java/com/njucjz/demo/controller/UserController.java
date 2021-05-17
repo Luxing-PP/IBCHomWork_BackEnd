@@ -24,7 +24,6 @@ public class UserController {
 
     @PostMapping("/getInfo")
     public UserInfoVO getInfo(@RequestBody GetInfoForm getInfoForm){
-        System.out.println(getInfoForm.toString());
         return  userInfoService.getUserInfo(getInfoForm.getUid(),getInfoForm.getVersion());
     }
 

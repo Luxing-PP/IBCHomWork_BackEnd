@@ -4,9 +4,15 @@
     <insert id="writeLetter" parameterType="com.njucjz.demo.data.Letter" useGeneratedKeys="true" keyProperty="lid">
         insert into `letters` (uid, content) VALUES (#{uid}, #{content})
     </insert>
-
+    
+    <select id="getLetterCountByUid" parameterType="Integer" resultType="Integer">
+        select Count(*) From `letters` WHERE uid = #{uid};
+    </select>
+    
     <select id="getLetterByRandom" resultMap="Letter">
-        SELECT * FROM `letters` WHERE lid >= (SELECT FLOOR( MAX(lid) * RAND()) FROM `letters` ) ORDER BY lid LIMIT 1;
+        SET @Border:=0;
+        SELECT FLOOR(MAX(lid) * RAND()) INTO @Border FROM `letters`;
+        SELECT * FROM `letters` WHERE lid > @Border ORDER BY lid LIMIT 1;
     </select>
 
     <select id="getRelatedLetterByUid" resultMap="Letter">

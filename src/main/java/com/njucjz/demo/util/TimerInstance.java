@@ -4,8 +4,9 @@ public class TimerInstance {
     // ms
     public static int TIMER_INITIAL = 86400;
     public static long created = System.currentTimeMillis();
+    //TODO 添加时间相关的完全没弄呢
     public static int extendTime = 0;
-    public static int version = 0;
+    public static int version = 1;
 
     public static synchronized void addTime(int extendTime){
         TimerInstance.extendTime+=extendTime;

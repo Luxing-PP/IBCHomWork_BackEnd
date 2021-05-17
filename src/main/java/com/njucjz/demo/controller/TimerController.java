@@ -17,11 +17,13 @@ public class TimerController {
     TimerService timerService;
 
     @PostMapping("/getTimer")
+    //Check
     public TimerVO getTimer(){
         return timerService.getTimer();
     }
 
     @PostMapping("/getTimerByVersion")
+    //Check
     public TimerVO getTimerByVersion(@RequestBody GetTimerByVersionForm form){
         return timerService.getTimerByVersion(form.getVersion());
     }

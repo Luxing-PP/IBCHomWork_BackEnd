@@ -2,6 +2,7 @@ package com.njucjz.demo.vo;
 
 public class TimerVO {
     private Integer version;
+    //请求旧版本是看不到leftTime的
     private Integer leftTime;
     private Integer livingTime;
 

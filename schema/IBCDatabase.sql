@@ -36,26 +36,27 @@ CREATE TABLE `user_info` (
     `version` int NOT NULL,
     `saveTimes` int default 0,
     `loginDay` int default 0,
+    `letterCount` int DEFAULT 0,
     PRIMARY KEY (`infoID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('1','1','1','3000','5');
+INSERT INTO `user_info` VALUES ('1','1','1','3000','5','0');
 -- ----------------------------
 -- Table structure for `user_letter`
 -- ----------------------------
 DROP TABLE IF EXISTS `user_letter`;
 CREATE TABLE `user_letter`(
-    `uid` int not null ,
-    `lid` int not null ,
-    PRIMARY KEY (`lid`)
+    `ulid` int NOT NULL AUTO_INCREMENT,
+    `uid` int NOT NULL ,
+    `lid` int NOT NULL ,
+    PRIMARY KEY (`ulid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- ----------------------------
 -- Records of user_letter
 -- ----------------------------
-INSERT INTO `user_letter` VALUES ('1','1');
+# INSERT INTO `user_letter` VALUES ('1','1','1');
 
 -- ----------------------------
 -- Table structure for `letters`
@@ -72,7 +73,7 @@ CREATE TABLE `letters`(
 -- ----------------------------
 -- Records of letters
 -- ----------------------------
-INSERT INTO `letters` (lid, uid, content) VALUES ('1','1','我是呆滞XXXXXX');
+# INSERT INTO `letters` (lid, uid, content) VALUES ('1','1','我是呆滞XXXXXX');
 -- ----------------------------
 -- Table structure for `response`
 -- ----------------------------
@@ -87,8 +88,10 @@ CREATE TABLE `response`(
 -- ----------------------------
 -- Records of response
 -- ----------------------------
-# Null
-
+# Test GetResponse
+INSERT INTO `response` VALUES ('1','1','1','我是第一条评论');
+INSERT INTO `response` VALUES ('2','1','1','我是第二条评论');
+INSERT INTO `response` VALUES ('3','1','1','我是第三条评论');
 -- ----------------------------
 -- Table structure for `timers`
 -- ----------------------------

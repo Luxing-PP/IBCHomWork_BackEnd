@@ -5,7 +5,17 @@ public class UserInfo {
     private Integer uid;
     private Integer version;
     private Integer saveTimes;
+    //todo 不知道怎么确定登录天数
     private Integer loginDay;
+    private Integer letterCount;
+
+    public Integer getLetterCount() {
+        return letterCount;
+    }
+
+    public void setLetterCount(Integer letterCount) {
+        this.letterCount = letterCount;
+    }
 
     public Integer getInfoID() {
         return infoID;

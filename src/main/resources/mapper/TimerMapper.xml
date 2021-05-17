@@ -10,7 +10,7 @@
     </select>
 
     <resultMap id="Timer" type="com.njucjz.demo.data.Timer">
-        <id column="tid" property="tid"/>
+        <id column="tid" property="tid"></id>
         <result column="version" property="version"></result>
         <result column="livingTime" property="livingTime"></result>
     </resultMap>

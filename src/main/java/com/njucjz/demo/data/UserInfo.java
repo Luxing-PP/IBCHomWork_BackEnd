@@ -5,7 +5,6 @@ public class UserInfo {
     private Integer uid;
     private Integer version;
     private Integer saveTimes;
-    //todo 不知道怎么确定登录天数
     private Integer loginDay;
     private Integer letterCount;
 
@@ -55,5 +54,14 @@ public class UserInfo {
 
     public void setLoginDay(Integer loginDay) {
         this.loginDay = loginDay;
+    }
+
+    public UserInfo(){
+
+    }
+
+    public UserInfo(Integer uid, Integer version){
+        this.uid =uid;
+        this.version = version;
     }
 }

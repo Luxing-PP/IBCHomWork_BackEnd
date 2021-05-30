@@ -1,9 +1,22 @@
 server:
   port: 8080
+  ssl:
+    enabled: true
+    key-store-password: h4l93gq6m9sw3u5
+    key-store: classpath:luxholic.xyz.jks
+    key-store-type: JKS
+
+condition:
+    http2https: true
+http:
+    port: 80
+
 spring:
   datasource:
 #    springbasic——对应了数据库名字
-    url: jdbc:mysql://1.116.220.137:3306/IBCDatabase?setUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&allowMultiQueries=true
+#    jdbc:mysql://localhost:3306/
+#    jdbc:mysql://1.116.220.137:3306/
+    url: jdbc:mysql://localhost:3306/IBCDatabase?setUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&allowMultiQueries=true
 
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root

@@ -7,4 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserLetterDao {
     boolean save(UserLetter userLetter);
     boolean deleteLetter(Integer uid, Integer lid);
+    boolean deleteAll();
 }

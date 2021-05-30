@@ -2,17 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.njucjz.demo.dao.UserDao">
     <insert id="save" parameterType="com.njucjz.demo.data.User" useGeneratedKeys="true" keyProperty="uid">
-        insert into `user` (username) VALUES (#{username})
+        insert into `user` (openid) VALUES (#{openid})
     </insert>
     
-    <select id="getUserByUsername" resultMap="User">
-        select * from `user` where username = #{username}
+    <select id="getUserByOpenid" resultMap="User">
+        select * from `user` where openid = #{openid}
     </select>
+
+    <select id="selectAll" resultMap="User">
+        select * from `user`
+    </select>
+
+    <select id="getActiveUserAmount" resultType="Integer">
+        select COUNT(*) from `user` WHERE isActive = 1;
+    </select>
+
+    <update id="resetAll">
+        update `user` set isActive = 0, login_time = CURRENT_TIMESTAMP;
+    </update>
+
+    <update id="updateLoginTimeByUid">
+        update `user` set login_time = CURRENT_TIMESTAMP , isActive = 1 WHERE uid = #{uid}
+    </update>
 
     <resultMap id="User" type="com.njucjz.demo.data.User">
         <id column="uid" property="uid"></id>
-        <result column="username" property="username"></result>
+        <result column="openid" property="openid"></result>
         <result column="userType" property="userType"></result>
         <result column="isActive" property="isActive"></result>
+        <result column="login_time" jdbcType="TIMESTAMP" property="loginTime"></result>
     </resultMap>
 </mapper>

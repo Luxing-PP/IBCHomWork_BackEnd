@@ -9,4 +9,5 @@ import java.util.List;
 public interface ResponseDao {
     boolean save(Response response);
     List<Response> getResponseByLid(Integer lid);
+    boolean deleteAll();
 }

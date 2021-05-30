@@ -10,9 +10,14 @@ public interface LetterDao {
     /*获取某用户写过的信数*/
     int getLetterCountByUid(Integer uid);
 
+    /*获取当前的总信件数*/
+    int getLetterCountForAll();
+
     /*tip 随机获取，据网上称可以优化*/
     Letter getLetterByRandom();
 
     /*获取后会删除 */
     Letter getRelatedLetterByUid(Integer uid);
+
+    boolean deleteAll();
 }

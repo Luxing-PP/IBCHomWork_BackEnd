@@ -9,6 +9,10 @@
         DELETE FROM `user_letter` WHERE uid = #{uid} and lid = #{lid};
     </delete>
 
+    <delete id="deleteAll">
+        DELETE FROM `user_letter`;
+    </delete>
+
     <resultMap id="UserLetter" type="com.njucjz.demo.data.UserLetter">
         <id column="ulid" property="ulid"></id>
         <result column="uid" property="uid"></result>

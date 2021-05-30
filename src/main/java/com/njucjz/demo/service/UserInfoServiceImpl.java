@@ -28,9 +28,6 @@ public class UserInfoServiceImpl implements UserInfoService{
 
         if(version== TimerInstance.version){
             userInfoVO.setLetterCount(letterDao.getLetterCountByUid(uid));
-        }else {
-            //tip 目前对旧版本无法检查写过多少信
-            userInfoVO.setLetterCount(-999);
         }
 
         return userInfoVO;

@@ -15,6 +15,7 @@ public class TimerServiceImpl implements TimerService {
 
     @Override
     public TimerVO getTimer() {
+
         TimerVO timerVO = new TimerVO();
         //完全手算doge
         timerVO.setVersion(TimerInstance.version);

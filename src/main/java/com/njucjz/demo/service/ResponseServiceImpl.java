@@ -1,10 +1,13 @@
 package com.njucjz.demo.service;
 
 import com.njucjz.demo.dao.ResponseDao;
+import com.njucjz.demo.dao.UserInfoDao;
 import com.njucjz.demo.dao.UserLetterDao;
 import com.njucjz.demo.data.Response;
 import com.njucjz.demo.data.User;
+import com.njucjz.demo.data.UserInfo;
 import com.njucjz.demo.data.UserLetter;
+import com.njucjz.demo.util.TimerInstance;
 import com.njucjz.demo.vo.ResponseVO;
 import com.njucjz.demo.vo.UserVO;
 import org.springframework.beans.BeanUtils;
@@ -21,6 +24,9 @@ public class ResponseServiceImpl implements ResponseService{
 
     @Autowired
     UserLetterDao userLetterDao;
+
+    @Autowired
+    UserInfoDao userInfoDao;
 
     @Override
     public boolean writeResponse(Response response) {
@@ -40,7 +46,12 @@ public class ResponseServiceImpl implements ResponseService{
             e.printStackTrace();
             return false;
         }
-        return resultOfResponse&&resultOfUserLetter;
+
+        //2. 增加时长
+        int extendTime = TimerInstance.extendLifeTo12H();
+        boolean resultOfInfo = userInfoDao.increaseSaveTimesByUid(response.getUid(),TimerInstance.version,extendTime);
+
+        return resultOfResponse&&resultOfUserLetter&&resultOfInfo;
     }
 
     @Override

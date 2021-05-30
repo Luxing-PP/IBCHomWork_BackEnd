@@ -8,11 +8,15 @@
     <select id="getLetterCountByUid" parameterType="Integer" resultType="Integer">
         select Count(*) From `letters` WHERE uid = #{uid};
     </select>
-    
+
+    <select id="getLetterCountForAll" resultType="Integer">
+        select Count(*) From `letters`;
+    </select>
+
     <select id="getLetterByRandom" resultMap="Letter">
         SET @Border:=0;
-        SELECT FLOOR(MAX(lid) * RAND()) INTO @Border FROM `letters`;
-        SELECT * FROM `letters` WHERE lid > @Border ORDER BY lid LIMIT 1;
+        SELECT FLOOR((MAX(lid)-MIN(lid))* RAND())+MIN(lid) INTO @Border FROM `letters`;
+        SELECT * FROM `letters` WHERE lid >= @Border ORDER BY lid LIMIT 1;
     </select>
 
     <select id="getRelatedLetterByUid" resultMap="Letter">
@@ -23,6 +27,10 @@
         DELETE FROM `user_letter` WHERE uid = #{uid} and lid = @targetID ;
         SELECT * From letters Where lid=@targetID;
     </select>
+
+    <delete id="deleteAll">
+        delete from `letters`;
+    </delete>
 
     <resultMap id="Letter" type="com.njucjz.demo.data.Letter">
         <id column="lid"  property="lid"></id>

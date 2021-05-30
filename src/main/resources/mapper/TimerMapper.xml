@@ -9,6 +9,10 @@
         select * from `timers` where version = #{version}
     </select>
 
+    <select id="getCurrentVersion" resultType="Integer">
+        select MAX(version) from `timers`
+    </select>
+
     <resultMap id="Timer" type="com.njucjz.demo.data.Timer">
         <id column="tid" property="tid"></id>
         <result column="version" property="version"></result>

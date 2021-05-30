@@ -16,15 +16,18 @@ CREATE TABLE `user` (
   `uid` int NOT NULL AUTO_INCREMENT,
 #  tip Collate 影响的是排序的规则
 #      Engine = InnoDB 则是选择了一个带事务控制（全部执行或全部不执行）引擎，
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci default NULL,
+  `openid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci not null UNIQUE,
   `userType` tinyint default 0,
-  `isActive` boolean,
+  `isActive` boolean default 0,
+  `login_time` DATETIME DEFAULT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1','Luxing','0','0');
+# INSERT INTO `user`(username) VALUES ('Luxing');
+# INSERT INTO `user`(username) VALUES ('Jerry');
+# INSERT INTO `user`(username) VALUES ('Eren');
 
 -- ----------------------------
 -- Table structure for `user_info`
@@ -42,7 +45,8 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('1','1','1','3000','5','0');
+# INSERT INTO `user_info` (uid, version) VALUES (1,1);
+# INSERT INTO `user_info` VALUES ('1','1','1','3000','5','0');
 -- ----------------------------
 -- Table structure for `user_letter`
 -- ----------------------------
@@ -56,7 +60,7 @@ CREATE TABLE `user_letter`(
 -- ----------------------------
 -- Records of user_letter
 -- ----------------------------
-# INSERT INTO `user_letter` VALUES ('1','1','1');
+# INSERT INTO `user_letter` (uid, lid) VALUES ('1','1');
 
 -- ----------------------------
 -- Table structure for `letters`
@@ -73,7 +77,9 @@ CREATE TABLE `letters`(
 -- ----------------------------
 -- Records of letters
 -- ----------------------------
-# INSERT INTO `letters` (lid, uid, content) VALUES ('1','1','我是呆滞XXXXXX');
+# INSERT INTO `letters` (uid, content) VALUES ('1','我是呆滞Letter1');
+# INSERT INTO `letters` (uid, content) VALUES ('1','我是呆滞Letter2');
+# INSERT INTO `letters` (uid, content) VALUES ('1','我是呆滞Letter3');
 -- ----------------------------
 -- Table structure for `response`
 -- ----------------------------
@@ -89,9 +95,9 @@ CREATE TABLE `response`(
 -- Records of response
 -- ----------------------------
 # Test GetResponse
-INSERT INTO `response` VALUES ('1','1','1','我是第一条评论');
-INSERT INTO `response` VALUES ('2','1','1','我是第二条评论');
-INSERT INTO `response` VALUES ('3','1','1','我是第三条评论');
+INSERT INTO `response` (uid, lid, content) VALUES ('1','1','我是呆滞的第一条评论');
+INSERT INTO `response` (uid, lid, content) VALUES ('1','1','我是呆滞的第二条评论');
+INSERT INTO `response` (uid, lid, content) VALUES ('1','1','我是呆滞的第三条评论');
 -- ----------------------------
 -- Table structure for `timers`
 -- ----------------------------

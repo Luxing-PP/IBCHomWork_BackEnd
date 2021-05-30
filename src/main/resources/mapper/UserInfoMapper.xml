@@ -2,13 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.njucjz.demo.dao.UserInfoDao">
 
-    <insert id="save" parameterType="com.njucjz.demo.data.UserInfo" useGeneratedKeys="true" keyProperty="infoID">
+    <insert id="create" parameterType="com.njucjz.demo.data.UserInfo" useGeneratedKeys="true" keyProperty="infoID">
         insert into `user_info` (uid,version) VALUES (#{uid},#{version});
     </insert>
 
     <select id="getUserInfoByUid" resultMap="UserInfo">
         select * from `user_info` where uid = #{uid} and version = #{version}
     </select>
+
+    <update id="updateLetterCountByUid">
+        update `user_info` set letterCount = #{letterCount} WHERE uid = #{uid} and version = #{version}
+    </update>
+
+    <update id="increaseLoginDayByUid">
+        update `user_info` set loginDay = loginDay + 1 WHERE uid = #{uid} and version = #{version}
+    </update>
+
+    <update id="increaseSaveTimesByUid">
+        update `user_info` set saveTimes = saveTimes + #{extendTime} WHERE uid = #{uid} and version = #{version}
+    </update>
     
     <resultMap id="UserInfo" type="com.njucjz.demo.data.UserInfo">
         <id column="infoID" property="infoID"></id>
